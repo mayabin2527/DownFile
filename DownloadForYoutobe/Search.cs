@@ -28,6 +28,7 @@ using Google.Apis.Upload;
 using Google.Apis.Util.Store;
 using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
+using static Google.Apis.YouTube.v3.CommentThreadsResource.ListRequest;
 
 namespace Google.Apis.YouTube.Samples
 {
@@ -72,21 +73,28 @@ namespace Google.Apis.YouTube.Samples
         ApplicationName = this.GetType().ToString()
       });
 
-      var searchListRequest = youtubeService.Search.List("snippet");
-      searchListRequest.Q = "Google"; // Replace with your search term.
-      searchListRequest.MaxResults = 50;
+      //var searchListRequest = youtubeService.Search.List("snippet");
+      //searchListRequest.Q = "Google"; // Replace with your search term.
+      //searchListRequest.MaxResults = 50;
 
             // Call the search.list method to retrieve results matching the specified query term.
-            
-            try
+            //add by myb  根据ID搜索
+            var searchListRequest = youtubeService.Search.List("id,snippet");
+            //searchListRequest.Q = "Multi Tech Media"; 
+            searchListRequest.ChannelId = "UCXAhMulAxc_TOhkCeq06rwQ";//Multi Tech Media
+            searchListRequest.Type = "video";
+            searchListRequest.MaxResults = 100;
+            searchListRequest.Order = SearchResource.ListRequest.OrderEnum.Date;
+            //end
+            /*try
             {
                 var searchListR= await searchListRequest.ExecuteAsync();
             }
             catch (Exception ex)
             {
-                DownloadForYoutobe.LogHelper.INFO(ex.Message+ex.StackTrace);
+                DownloadForYoutobe.LogHelper.Info(ex.Message+ex.StackTrace);
             }
-
+            */
             var searchListResponse = await searchListRequest.ExecuteAsync();
             List<string> videos = new List<string>();
       List<string> channels = new List<string>();
@@ -115,6 +123,13 @@ namespace Google.Apis.YouTube.Samples
       Console.WriteLine(String.Format("Videos:\n{0}\n", string.Join("\n", videos)));
       Console.WriteLine(String.Format("Channels:\n{0}\n", string.Join("\n", channels)));
       Console.WriteLine(String.Format("Playlists:\n{0}\n", string.Join("\n", playlists)));
+
+            //title="GEM鄧紫棋" href="/channel/UCsLWG2t7n9LFsvH0wR2rtpw">
+            //"Multi Tech Media (UCXAhMulAxc_TOhkCeq06rwQ)"  //ok 
+            //"Multi Tech Media (UCu46Y_hK2oRmSO6afGZAUuA)"
+            // "Samsung Galaxy S21 WORLD&#39;S FIRST? Price, Camera, Launch Date, Features, Trailer, Leaks, Concept (1oWq1P_1tCY)"
+            //播放地址： https://www.youtube.com/watch?v=1oWq1P_1tCY
+            DownloadForYoutobe.LogHelper.Info(String.Format("Videos:\n{0}\n", string.Join("\n", videos)));
+        }
     }
-  }
 }

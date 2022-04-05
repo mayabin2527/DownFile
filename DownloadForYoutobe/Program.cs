@@ -8,8 +8,9 @@ namespace DownloadForYoutobe
         {
             //new RestSharpHelper().getVideos("1");
             //1
-            LogHelper.INFO("Start");
+            LogHelper.Info("Start");
            Google.Apis.YouTube.Samples.Search.Main1(null);
+            LogHelper.Info("End");
             Console.WriteLine("Hello World!");
         }
     }

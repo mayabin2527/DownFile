@@ -8,13 +8,14 @@ namespace DownloadForYoutobe
         {
         }
 
-        public static void INFO(string msg) {
+        public static void Info(string msg) {
 
             try
             {
-
+            string logFile = "logs/" + DateTime.Now.ToString("yyyy-MM-dd")+ ".txt";
             Log.Logger = new LoggerConfiguration()
-               .WriteTo.File("logs/myapp.txt")
+               //.WriteTo.File("logs/myapp.txt")
+               .WriteTo.File(logFile)
                .CreateLogger();
 
             Log.Information(msg);
@@ -26,6 +27,16 @@ namespace DownloadForYoutobe
             {
 
             }
+        }
+        public static void Error(string msg) {
+
+            string logFile = "logs/" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt";
+            Log.Logger = new LoggerConfiguration()
+               .WriteTo.File(logFile)
+               .CreateLogger();
+
+            Log.Error(msg);
+            Log.CloseAndFlush();
         }
     }
 }
