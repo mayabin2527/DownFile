@@ -73,9 +73,10 @@ namespace Google.Apis.YouTube.Samples
         ApplicationName = this.GetType().ToString()
       });
 
-      //var searchListRequest = youtubeService.Search.List("snippet");
-      //searchListRequest.Q = "Google"; // Replace with your search term.
-      //searchListRequest.MaxResults = 50;
+            //var searchListRequest = youtubeService.Search.List("snippet");
+            //searchListRequest.Q = "Google"; // Replace with your search term.
+            //searchListRequest.Q = "Multi Tech Media"; 
+            //searchListRequest.MaxResults = 50;
 
             // Call the search.list method to retrieve results matching the specified query term.
             //add by myb  根据ID搜索
