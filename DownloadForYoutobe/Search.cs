@@ -131,6 +131,36 @@ namespace Google.Apis.YouTube.Samples
             // "Samsung Galaxy S21 WORLD&#39;S FIRST? Price, Camera, Launch Date, Features, Trailer, Leaks, Concept (1oWq1P_1tCY)"
             //播放地址： https://www.youtube.com/watch?v=1oWq1P_1tCY
             DownloadForYoutobe.LogHelper.Info(String.Format("Videos:\n{0}\n", string.Join("\n", videos)));
+            var cmdVideos = getVideosFromCmd(videos);
+            if (cmdVideos.Count>0)
+            {
+                DownloadForYoutobe.CmdHelper.ExecuteCMDWithVideos(cmdVideos);
+            }
+        }
+
+        private Dictionary<string, string> getVideosFromCmd(List<string> list) {
+            
+            Dictionary<string, string> vides = new Dictionary<string, string>();
+            try
+            {
+                foreach (var item in list)
+                {
+                    //Samsung Galaxy S24 Ultra Price, Release Date, Trailer, Launch Date, Camera, First Look, Leaks, Specs (uNMx1tfyqbE)
+                    string[] videoItem = item.Split('(');
+                    string videoName = videoItem[0];
+                    string videoID = videoItem[1].Replace(")", "");
+                    if (!vides.ContainsKey(videoID))
+                    {
+                        vides.Add(videoID, videoName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DownloadForYoutobe.LogHelper.Error(ex.Message + ex.StackTrace);
+            }
+            
+            return vides;
         }
     }
 }

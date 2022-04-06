@@ -103,6 +103,7 @@
     <Compile Include="RestSharpHelper.cs" />
     <Compile Include="Search.cs" />
     <Compile Include="LogHelper.cs" />
+    <Compile Include="CmdHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

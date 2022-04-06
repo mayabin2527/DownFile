@@ -79,4 +79,3 @@
 /Users/ma_yabin/DownFile/DownloadForYoutobe/obj/Debug/DownloadForYoutobe.csproj.CopyComplete
 /Users/ma_yabin/DownFile/DownloadForYoutobe/obj/Debug/DownloadForYoutobe.exe
 /Users/ma_yabin/DownFile/DownloadForYoutobe/obj/Debug/DownloadForYoutobe.pdb
-/Users/ma_yabin/DownFile/DownloadForYoutobe/obj/Debug/DownloadForYoutobe.csprojAssemblyReference.cache
