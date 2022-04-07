@@ -54,7 +54,7 @@ namespace DownloadForYoutobe
             Dictionary<string, string> videos = videoList;
             foreach (string key in videoList.Keys)
             {
-                string videoName = videos["key"];
+                string videoName = videos[key];
                 string videoUrl = "https://www.youtube.com/watch?v=" + key;
                 string cmd = "youtube-dl -f ' bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best ' " + videoUrl;
                     DownloadForYoutobe.LogHelper.Info("Video ID:" + key+"-->"+ videoName);
